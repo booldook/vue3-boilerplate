@@ -1,0 +1,91 @@
+@use "sass:map";
+@import 'variables';
+
+@mixin rel {
+  position: relative;
+}
+
+@mixin abs {
+  position: absolute;
+}
+
+@mixin fixed {
+  position: fixed;
+}
+
+@mixin center-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex-col {
+  flex-direction: column;
+}
+
+@mixin border ($color: w100, $position: all, $width: 1px) {
+  @if $position == all or $position == '' {
+    border-style: solid;
+    border-color: map.get($theme-default, #{ $color });
+    border-width: $width;
+  }
+  @else {
+    border-#{ $position }-style: solid;
+    border-#{ $position }-color: map.get($theme-default, #{ $color });
+    border-#{ $position }-width: $width;
+  }
+}
+
+@function color ($color: w0) {
+  @return map.get($theme-default, '#{$color}');
+}
+
+
+@mixin layer($p: absolute, $i: auto, $t: auto, $l: auto, $r: auto, $b: auto) {
+  position: $p;
+  z-index: $i;
+  left: $l;
+  right: $r;
+  top: $t;
+  bottom: $b;
+}
+
+@mixin flex($h: flex-start, $v: stretch, $w: nowrap) {
+  display: flex;
+  justify-content: $h;
+  align-items: $v;
+  flex-wrap: $w;
+}
+
+
+
+@mixin XL {
+  @media screen and (max-width: $xl) {
+    @content;
+  }
+}
+
+@mixin LG {
+  @media screen and (max-width: $lg) {
+    @content;
+  }
+}
+
+@mixin MD {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin SM {
+  @media screen and (max-width: $sm) {
+    @content;
+  }
+}
+
+@mixin XS {
+  @media screen and (max-width: $xs) {
+    @content;
+  }
+}

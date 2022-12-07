@@ -1,9 +1,9 @@
 <template>
-  <div class="item">
-    <i>
+  <div class="item-wrapper">
+    <i class="icon-wrap">
       <slot name="icon"></slot>
     </i>
-    <div class="details">
+    <div class="content-wrap">
       <h3>
         <slot name="heading"></slot>
       </h3>
@@ -12,16 +12,20 @@
   </div>
 </template>
 
-<style scoped>
-.item {
+<style scoped lang="scss">
+.item-wrapper {
   margin-top: 2rem;
   display: flex;
+
+  .icon-wrap {
+    padding: 1em;
+  }
+
+  .content-wrap {
+    margin-left: 1rem;
+  }
 }
 
-.details {
-  flex: 1;
-  margin-left: 1rem;
-}
 
 i {
   display: flex;
@@ -40,20 +44,16 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-  .item {
-    margin-top: 0;
-    padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
-  }
 
   i {
-    top: calc(50% - 25px);
-    left: -26px;
-    position: absolute;
-    border: 1px solid var(--color-border);
-    background: var(--color-background);
-    border-radius: 8px;
-    width: 50px;
-    height: 50px;
+    @include border(w100, bottom);
+    background-color: color(w100);
+    border-radius: 4px;
+    width: 56px;
+    height: 56px;
+    &:hover {
+      background-color: color(w100);
+    }
   }
 
   .item:before {

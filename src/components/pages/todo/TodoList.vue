@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineProps, onMounted } from 'vue';
+// import { computed, defineProps, onMounted } from 'vue';
 import { storeToRefs } from 'pinia'
 import { useTodoStore } from '@/stores/todoStore'
 
@@ -35,7 +35,7 @@ function handleChange(_data) {
     padding: 6px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #eee;
+    @include border(w100, bottom);
     cursor: pointer;
   }
 }
