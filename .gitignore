@@ -229,3 +229,4 @@ docs/_book
 test/
 
 !/dist/
+!/ES6.md
