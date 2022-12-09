@@ -10,14 +10,14 @@ const {
   proxy: { $isSet },
 } = getCurrentInstance()
 const todoStore = useTodoStore()
-const { getListCnt } = storeToRefs(todoStore)
-const { actAddList, actDelListAll } = todoStore
+const { getTodoCount } = storeToRefs(todoStore)
+const { addTodo, removeTodoAll } = todoStore
 
 const todo = ref('')
 
 function onSave() {
   if ($isSet(todo.value)) {
-    actAddList(todo.value)
+    addTodo(todo.value)
     todo.value = ''
   }
 }
@@ -27,13 +27,13 @@ function onSave() {
   <div class="todo-wrapper">
     <div class="todo-header">
       <h1 class="todo-title">PINIA</h1>
-      <div>리스트: {{ getListCnt }} 개</div>
+      <div>리스트: {{ getTodoCount }} 개</div>
     </div>
     <div class="todo-form">
       <form @submit.prevent="onSave">
         할일 등록 : <input type="text" v-model="todo" class="input-default" />
         <button class="btn-default">데이터 추가</button>
-        <button type="button" class="btn-default" @click="actDelListAll">데이터 삭제</button>
+        <button type="button" class="btn-default" @click="removeTodoAll">데이터 삭제</button>
       </form>
     </div>
     <div class="todo-body">

@@ -1,27 +1,32 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+// import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import routes from './routes'
 
-//# Components
+//% Components
 import App from './App.vue'
 import PagerCp from './components/common/PagerCp.vue'
 
-//# plugins
-import globals from '@/modules/global'
+//% plugins
+import globals from '@/plugins/common'
 
-//# SCSS
+//% SCSS
 import './assets/scss/common.scss'
 
-// # App init
+//% App init
 const app = createApp(App)
 
-//# Global Components Init
+//% Pinia Init
+const pinia = createPinia()
+// pinia.use(piniaPluginPersistedstate)
+
+//% Global Components Init
 app.component('PagerCp', PagerCp)
 
-//# Global Plugin Init
+//% Global Plugin Init
 app.use(globals)
-app.use(createPinia())
 app.use(routes)
+app.use(pinia)
 
-//# App Mount
+//% App Mount
 app.mount('#app')

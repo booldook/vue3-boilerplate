@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia'
 import { useTodoStore } from '@/stores/todoStore'
 
 const todoStore = useTodoStore()
-const { actChgPage } = todoStore
+const { updatePage } = todoStore
 const { getPager } = storeToRefs(todoStore)
 
 </script>
@@ -11,15 +11,15 @@ const { getPager } = storeToRefs(todoStore)
 <template>
   <div class="pager-wrapper">
     <ul class="pager-wrap">
-      <li class="pager" @click="actChgPage(1)">←</li>
-      <li class="pager" @click="actChgPage(getPager.pagerPrev)">《</li>
-      <li class="pager" @click="actChgPage(getPager.pagePrev)">〈</li>
-      <li v-for="(v, k) in getPager.pagerArr" :key="k" :class="{ active: v === getPager.page }" class="pager" @click="actChgPage(v)">
+      <li class="pager" @click="updatePage(1)">←</li>
+      <li class="pager" @click="updatePage(getPager.pagerPrev)">《</li>
+      <li class="pager" @click="updatePage(getPager.pagePrev)">〈</li>
+      <li v-for="(v, k) in getPager.pagerArr" :key="k" :class="{ active: v === getPager.page }" class="pager" @click="updatePage(v)">
         {{ v }}
       </li>
-      <li class="pager" @click="actChgPage(getPager.pageNext)">〉</li>
-      <li class="pager" @click="actChgPage(getPager.pagerNext)">》</li>
-      <li class="pager" @click="actChgPage(getPager.pageTotal)">→</li>
+      <li class="pager" @click="updatePage(getPager.pageNext)">〉</li>
+      <li class="pager" @click="updatePage(getPager.pagerNext)">》</li>
+      <li class="pager" @click="updatePage(getPager.pageTotal)">→</li>
     </ul>
   </div>
 </template>

@@ -4,11 +4,11 @@ import { storeToRefs } from 'pinia'
 import { useTodoStore } from '@/stores/todoStore'
 
 const todoStore = useTodoStore()
-const { actDelList } = todoStore
-const { getListPage, getPager } = storeToRefs(todoStore)
+const { removeTodo } = todoStore
+const { getTodoPage, getPager } = storeToRefs(todoStore)
 
 // const props = defineProps([])
-// watch(() => getListAll, (nv, ov) => { console.log(nv, ov) })
+// watch(() => getTodoAll, (nv, ov) => { console.log(nv, ov) })
 // watch(() => listTest, (nv, ov) => { console.log(nv, ov) })
 // const comp = computed(() => {})
 
@@ -19,9 +19,9 @@ function handleViewList(_data) {
 
 <template>
   <ul class="list-wrap">
-    <li class="list" v-for="(v, i) in getListPage(getPager.page)" :key="i" @click="handleViewList(v)">
+    <li class="list" v-for="(v, i) in getTodoPage(getPager.page)" :key="i" @click="handleViewList(v)">
       {{ v }}
-      <span class="btn-close" @click.stop="actDelList(i)">x</span>
+      <span class="btn-close" @click.stop="removeTodo(i)">x</span>
     </li>
   </ul>
 </template>
