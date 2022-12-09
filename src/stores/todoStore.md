@@ -2,7 +2,6 @@
 
 ## todoStore
 
-
 ### state
 . (Array)   list
 . (Number)  page
@@ -16,8 +15,8 @@
 . (Number)  getPageTotal
 
 ### action
-. setPage(_page)
-. addList(data)
-. removeList(idx)
-. removeListAll()
-. updateList(idx, data)
+. actChgPage(_page)
+. actAddList(data)
+. actDelList(idx)
+. actDelListAll()
+. actChgList(idx, data)

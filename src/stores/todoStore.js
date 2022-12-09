@@ -1,38 +1,33 @@
-import { ref, computed, getCurrentInstance } from 'vue';
-import { defineStore } from 'pinia';
+import { ref, computed, getCurrentInstance } from 'vue'
+import { defineStore } from 'pinia'
 
+import { pagerInitData, computePager } from '@/modules/pager'
+
+//% Store Init
 export const useTodoStore = defineStore('todo', () => {
 
   const { proxy: { $isSet } } = getCurrentInstance()
 
+  //% STATE
   const list = ref([])
-  const pager = ref({
-    page: 1,
-    total: 0,
-    pageCnt: 10,
-    pagerCnt: 5,
-    pageTotal: 1,
-    startIdx: 0,
-    pageStart: 1,
-    pageEnd: 1,
-    pagePrev: 1,
-    pageNext: 1,
-    pagerPrev: 1,
-    pagerNext: 1,
-    pagerArr: [],
-  })
+  const pager = ref({ ...pagerInitData })
 
-  // # list - getter
-  const listCnt = computed(() => list.value.length);
-  const listPage = computed(() => (_page = 1) => list.value.slice((_page - 1) * pager.value.pageCnt, (_page - 1) * pager.value.pageCnt + pager.value.pageCnt));
-  const listAll = computed(state => list.value);
+  //% GETTER
+  //# 전체 리스트 개수
+  const getListCnt = computed(() => list.value.length)
 
-  // # pager - getter
-  const getPager = computed(setPager)
+  //# 모든 리스트
+  const getListAll = computed(() => list.value)
 
+  //# 현재페이지에 보여질 리스트
+  const getListPage = computed(() => (_page = 1) => list.value.slice((_page - 1) * pager.value.pageCnt, (_page - 1) * pager.value.pageCnt + pager.value.pageCnt))
 
-  // # list - action
-  function addList(data) {
+  //# pager 모든값 구하기
+  const getPager = computed(() => computePager(pager.value.page, list.value.length, pager.value.pageCnt, pager.value.pagerCnt))
+
+  //% ACTION
+  //# 리스트 추가
+  function actAddList(data) {
     if ($isSet(data)) {
       list.value.unshift(data)
       return true
@@ -40,7 +35,8 @@ export const useTodoStore = defineStore('todo', () => {
     else return false
   }
 
-  function removeList(idx) {
+  //# 리스트 삭제
+  function actDelList(idx) {
     if (Number(idx)) {
       list.value.splice(idx, 1)
       return true
@@ -50,82 +46,53 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  function removeListAll() {
-    list.value = [];
-    return true;
-  }
-
-  function updateList(idx, data) {
+  //# 리스트 수정
+  function actChgList(idx, data) {
     if (Number(idx) && typeof data === 'object') {
-      list.value.splice(idx, 1, data);
-      return true;
+      list.value.splice(idx, 1, data)
+      return true
     }
     else {
-      return false;
+      return false
     }
   }
 
-  // # pager - action
-  function setPage(_page) {
-    pager.value.page = Number(_page) || 1;
-    return true;
+  //# 모든 리스트 삭제
+  function actDelListAll() {
+    list.value = []
+    return true
   }
 
-  function setPageCnt(_pageCnt) {
-    pager.value.pageCnt = Number(_pageCnt) || 10;
-    return true;
+  //# 현재페이지 지정
+  function actChgPage(_page) {
+    pager.value.page = Number(_page) || 1
+    return pager.value.page
   }
 
-  function setPagerCnt(_pagerCnt) {
-    pager.value.pagerCnt = Number(_pagerCnt) || 5;
-    return true;
+  //# 한페이지에 보여질 리스트 수 지정
+  function actChgPageCnt(_pageCnt) {
+    pager.value.pageCnt = Number(_pageCnt) || 10
+    return pager.value.pageCnt
   }
 
-  function setPager() {
-    pager.value.pageTotal = Math.ceil(list.value.length / pager.value.pageCnt) || 1;
-    pager.value.startIdx = (pager.value.page - 1) * pager.value.pageCnt;
-    pager.value.pageStart = Math.floor((pager.value.page - 1) / pager.value.pagerCnt) * pager.value.pagerCnt + 1;
-    pager.value.pageEnd = pager.value.pageStart + pager.value.pagerCnt - 1 > pager.value.pageTotal ? pager.value.pageTotal : pager.value.pageStart + pager.value.pagerCnt - 1;
-    pager.value.pagePrev = pager.value.page === 1 ? 1 : pager.value.page - 1;
-    pager.value.pageNext = pager.value.page === pager.value.pageTotal ? pager.value.pageTotal : pager.value.page + 1;
-    pager.value.pagerPrev = pager.value.pageStart === 1 ? 1 : pager.value.pageStart - 1;
-    pager.value.pagerNext = pager.value.pageEnd === pager.value.pageTotal ? pager.value.pageTotal : pager.value.pageEnd + 1;
-    pager.value.pagerArr = [];
-    for (let i = pager.value.pageStart; i <= pager.value.pageEnd; i++) {
-      pager.value.pagerArr.push(i);
-    }
-
-    return {
-      page: pager.value.page,
-      total: pager.value.total,
-      pageCnt: pager.value.pageCnt,
-      pagerCnt: pager.value.pagerCnt,
-      pageTotal: pager.value.pageTotal,
-      startIdx: pager.value.startIdx,
-      pageStart: pager.value.pageStart,
-      pageEnd: pager.value.pageEnd,
-      pagePrev: pager.value.pagePrev,
-      pageNext: pager.value.pageNext,
-      pagerPrev: pager.value.pagerPrev,
-      pagerNext: pager.value.pagerNext,
-      pagerArr: pager.value.pagerArr,
-    }
+  //# 페이저 묶음 개수 지정
+  function actChgPagerCnt(_pagerCnt) {
+    pager.value.pagerCnt = Number(_pagerCnt) || 5
+    return pager.value.pagerCnt
   }
 
   return {
-    listCnt,
-    listPage,
-    listAll,
-    pager,
-    addList,
-    removeList,
-    removeListAll,
-    updateList,
+    getListCnt,
+    getListPage,
+    getListAll,
+    actAddList,
+    actChgList,
+    actDelList,
+    actDelListAll,
     getPager,
-    setPager,
-    setPage,
-    setPageCnt,
-    setPagerCnt,
-  };
-});
+    actChgPage,
+    actChgPageCnt,
+    actChgPagerCnt,
+  }
+})
 
