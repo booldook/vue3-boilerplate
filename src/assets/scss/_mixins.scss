@@ -1,23 +1,5 @@
 @import 'variables';
 
-// Function
-@function color ($value: w0) {
-  @return map-get($color-value, #{ $value });
-}
-
-@function gap ($value: md) {
-  @return map-get($gap-value, #{ $value });
-}
-
-@function size ($value: md) {
-  @return map-get($size-value, #{ $value });
-}
-
-@function radius ($value: md) {
-  @return map-get($radius-value, #{ $value });
-}
-
-
 // Mixin
 @mixin rel {
   position: relative;

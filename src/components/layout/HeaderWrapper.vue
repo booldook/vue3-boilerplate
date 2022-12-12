@@ -1,5 +1,12 @@
 <script setup>
+import { useThemeStore } from '@/stores/themeStore'
+import { storeToRefs } from 'pinia'
+
 import HelloWorld from '@/components/common/LogoCp.vue'
+
+const themeStore = useThemeStore()
+const { getTheme } = storeToRefs(themeStore)
+const { updateTheme } = themeStore
 </script>
 
 <template>
@@ -9,6 +16,10 @@ import HelloWorld from '@/components/common/LogoCp.vue'
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/todo">Todo</RouterLink>
     </nav>
+    <ul class="theme-wrapper">
+      <li v-if="getTheme === 'default'" class="theme default" @click="updateTheme('dark')">기본</li>
+      <li v-else class="theme dark" @click="updateTheme('default')">다크</li>
+    </ul>
   </header>
 </template>
 
@@ -43,6 +54,10 @@ import HelloWorld from '@/components/common/LogoCp.vue'
         }
       }
     }
+  }
+  .theme-wrapper {
+    margin-left: auto;
+    cursor: pointer;
   }
 }
 </style>

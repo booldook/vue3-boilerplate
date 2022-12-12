@@ -1,7 +1,23 @@
 // Common values
 
-$theme-map: null;
+// Function
+@function color ($value: w0) {
+  @return map-get($color-value, #{ $value });
+}
 
+@function gap ($value: md) {
+  @return map-get($gap-value, #{ $value });
+}
+
+@function size ($value: md) {
+  @return map-get($size-value, #{ $value });
+}
+
+@function radius ($value: md) {
+  @return map-get($radius-value, #{ $value });
+}
+
+// color
 $color-value: (
   'white': #fff,
   'w100': #f4f4f4,
@@ -24,6 +40,7 @@ $color-value: (
   'danger': #ee3333,
 );
 
+// margin, padding
 $gap-value: (
   'xl': 2em,
   'lg': 1.5em,
@@ -32,6 +49,7 @@ $gap-value: (
   'xs': 0.75em,
 );
 
+// response size
 $size-value: (
   'xl': 1400px,
   'lg': 1200px,
@@ -40,6 +58,7 @@ $size-value: (
   'xs': 576px,
 );
 
+// radius size
 $radius-value: (
   'xl': 10px,
   'lg': 8px,
@@ -48,24 +67,24 @@ $radius-value: (
   'xs': 2px,
 );
 
-
+// Theme
 $themes: (
   default: (
-    root-bg: linear-gradient(color(w10), color(w10)),
-    page-bg: color(w20),
-    text: color(w90),
-    text2: color(w70),
+    root-bg: linear-gradient(color(white), color(w90)),
+    page-bg: color(w90),
+    text: color(w10),
+    text2: color(w20),
     link: color(accent),
     hover: color(primary),
-    border: color(w30),
+    border: color(w80),
   ),
   dark: (
-    root-bg: linear-gradient(color(white), color(w90)),
-    page-bg: color(w80),
-    text: color(w20),
-    text2: color(w40),
-    link: color(primary),
-    hover: color(accent),
-    border: color(w80),
+    root-bg: linear-gradient(color(w40), color(w10)),
+    page-bg: color(w30),
+    text: color(w90),
+    text2: color(w80),
+    link: color(accent),
+    hover: color(primary),
+    border: color(w20),
   ),
 );
