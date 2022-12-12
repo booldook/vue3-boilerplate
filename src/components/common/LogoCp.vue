@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   msg: {
     type: String,
     required: true,
@@ -11,7 +11,7 @@ defineProps({
   <div class="logo-wrapper">
     <RouterLink to="/">
       <img src="@/assets/img/logo.svg" class="logo-img" alt="logo" />
-      <h1 class="logo-txt">{{ msg }}</h1>
+      <h1 class="logo-txt">{{ props.msg }}</h1>
     </RouterLink>
   </div>
 </template>

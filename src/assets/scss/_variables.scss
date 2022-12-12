@@ -1,21 +1,71 @@
+// Common values
 
-// Color
-$theme-default: (
-  "w100": #f4f4f4,
-  "w90": #efefef,
-  "w80": #d2d2d2,
-  "w70": #bbbbbb,
-  "w60": #9d9d9d,
-  "w50": #888888,
-  "w40": #6f6f6f,
-  "w30": #4f4f4f,
-  "w20": #373737,
-  "w10": #212121,
-  "w0": #080808,
-  "primary": #3798f8,
-  "accent": #1356ff,
-  "success": #40df8a,
-  "warning": #e6ae69,
-  "info": #61e3c5,
-  "danger": #ee3333,
+$theme-map: null;
+
+$color-value: (
+  'white': #fff,
+  'w100': #f4f4f4,
+  'w90': #efefef,
+  'w80': #d2d2d2,
+  'w70': #bbbbbb,
+  'w60': #9d9d9d,
+  'w50': #888888,
+  'w40': #6f6f6f,
+  'w30': #4f4f4f,
+  'w20': #373737,
+  'w10': #212121,
+  'w0': #080808,
+  'black': '#000',
+  'primary': #3798f8,
+  'accent': #1356ff,
+  'success': #40df8a,
+  'warning': #e6ae69,
+  'info': #61e3c5,
+  'danger': #ee3333,
+);
+
+$gap-value: (
+  'xl': 2em,
+  'lg': 1.5em,
+  'md': 1em,
+  'sm': 0.875em,
+  'xs': 0.75em,
+);
+
+$size-value: (
+  'xl': 1400px,
+  'lg': 1200px,
+  'md': 992px,
+  'sm': 768px,
+  'xs': 576px,
+);
+
+$radius-value: (
+  'xl': 10px,
+  'lg': 8px,
+  'md': 6px,
+  'sm': 4px,
+  'xs': 2px,
+);
+
+
+$themes: (
+  default: (
+    root-bg: linear-gradient(color(w10), color(w10)),
+    page-bg: color(w20),
+    text: color(w90),
+    text2: color(w70),
+    link: color(accent),
+    hover: color(primary),
+    border: color(w30),
+  ),
+  dark: (
+    root-bg: linear-gradient(color(white), color(w90)),
+    page-bg: color(w80),
+    text: color(w20),
+    text2: color(w40),
+    link: color(primary),
+    hover: color(accent),
+    border: color(w80),
+  ),
 );

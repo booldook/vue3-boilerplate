@@ -1,4 +1,5 @@
 <script setup>
+import PagerCp from '@/components/common/PagerCp.vue'
 import { ref, getCurrentInstance } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useTodoStore } from '@/stores/todoStore'
@@ -37,8 +38,8 @@ function onSave() {
       </form>
     </div>
     <div class="todo-body">
-      <todo-list />
-      <pager-cp />
+      <TodoList />
+      <PagerCp />
     </div>
   </div>
 </template>

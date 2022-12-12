@@ -1,6 +1,24 @@
-@use "sass:map";
 @import 'variables';
 
+// Function
+@function color ($value: w0) {
+  @return map-get($color-value, #{ $value });
+}
+
+@function gap ($value: md) {
+  @return map-get($gap-value, #{ $value });
+}
+
+@function size ($value: md) {
+  @return map-get($size-value, #{ $value });
+}
+
+@function radius ($value: md) {
+  @return map-get($radius-value, #{ $value });
+}
+
+
+// Mixin
 @mixin rel {
   position: relative;
 }
@@ -27,20 +45,15 @@
 @mixin border ($color: w100, $position: all, $width: 1px) {
   @if $position == all or $position == '' {
     border-style: solid;
-    border-color: map.get($theme-default, #{ $color });
+    border-color: color($color);
     border-width: $width;
   }
   @else {
     border-#{ $position }-style: solid;
-    border-#{ $position }-color: map.get($theme-default, #{ $color });
+    border-#{ $position }-color: color($color);
     border-#{ $position }-width: $width;
   }
 }
-
-@function color ($color: w0) {
-  @return map.get($theme-default, '#{$color}');
-}
-
 
 @mixin layer($p: absolute, $i: auto, $t: auto, $l: auto, $r: auto, $b: auto) {
   position: $p;
@@ -59,33 +72,52 @@
 }
 
 
-
+// 반응형
 @mixin XL {
-  @media screen and (max-width: $xl) {
+  @media screen and (max-width: size(xl)) {
     @content;
   }
 }
 
 @mixin LG {
-  @media screen and (max-width: $lg) {
+  @media screen and (max-width: size(lg)) {
     @content;
   }
 }
 
 @mixin MD {
-  @media screen and (max-width: $md) {
+  @media screen and (max-width: size(md)) {
     @content;
   }
 }
 
 @mixin SM {
-  @media screen and (max-width: $sm) {
+  @media screen and (max-width: size(sm)) {
     @content;
   }
 }
 
 @mixin XS {
-  @media screen and (max-width: $xs) {
+  @media screen and (max-width: size(xs)) {
     @content;
   }
+}
+
+// Theme
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{ $theme } & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{ $key }');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
 }

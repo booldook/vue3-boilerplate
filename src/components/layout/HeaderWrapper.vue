@@ -4,7 +4,7 @@ import HelloWorld from '@/components/common/LogoCp.vue'
 
 <template>
   <header class="header-wrapper">
-    <hello-world msg="Vue3" />
+    <HelloWorld msg="Vue3" />
     <nav class="nav-wrapper">
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/todo">Todo</RouterLink>

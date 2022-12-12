@@ -1,11 +1,12 @@
 <script setup>
-// import { computed, defineProps, onMounted } from 'vue';
+
+//% store 가져오기
 import { storeToRefs } from 'pinia'
 import { useTodoStore } from '@/stores/todoStore'
 
 const todoStore = useTodoStore()
-const { removeTodo } = todoStore
 const { getTodoPage, getPager } = storeToRefs(todoStore)
+const { removeTodo } = todoStore
 
 // const props = defineProps([])
 // watch(() => getTodoAll, (nv, ov) => { console.log(nv, ov) })

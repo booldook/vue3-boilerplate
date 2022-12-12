@@ -1,3 +1,5 @@
+
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -31,4 +33,42 @@ body {
 
 a {
   text-decoration: none;
+}
+
+// button normalize
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  outline: none;
+}
+
+button,
+input {
+  overflow: visible;
+  border-width: 1px;
+  border-style: solid;
+  border-color: color(w80);
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
 }

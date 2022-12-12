@@ -1,6 +1,6 @@
 export default {
-  install(Vue) {
-    Vue.config.globalProperties.$isEmpty = (val) => {
+  install(app, options) {
+    app.config.globalProperties.$isEmpty = (val) => {
       return !(
         val ||
         val === null ||
@@ -13,7 +13,7 @@ export default {
       )
     }
 
-    Vue.config.globalProperties.$isSet = (val) => {
+    app.config.globalProperties.$isSet = (val) => {
       return val && val !== ''
     }
   },

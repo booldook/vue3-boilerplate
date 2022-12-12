@@ -4,6 +4,6 @@ import Welcome from '@/components/page/home/WelcomeWrap.vue'
 
 <template>
   <main>
-    <welcome />
+    <Welcome />
   </main>
 </template>

@@ -2,6 +2,9 @@
 import Footer from '@/components/layout/FooterWrapper.vue'
 import Header from '@/components/layout/HeaderWrapper.vue'
 import { RouterView } from 'vue-router'
+
+
+
 </script>
 
 <template>
