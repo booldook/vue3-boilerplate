@@ -68,6 +68,8 @@ $radius-value: (
 );
 
 // Theme
+$theme-map: default;
+
 $themes: (
   default: (
     root-bg: linear-gradient(color(white), color(w90)),

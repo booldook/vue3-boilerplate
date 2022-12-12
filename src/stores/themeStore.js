@@ -8,7 +8,7 @@ export const useThemeStore = defineStore('theme', () => {
   const { proxy: { $isSet } } = getCurrentInstance()
 
   //% STATE
-  const theme = ref('dark')
+  const theme = ref('default')
 
   //% GETTER
   /**
