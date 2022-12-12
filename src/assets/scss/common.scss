@@ -33,6 +33,10 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
+  &:link, &:visited, &:hover, &:active {
+    color: inherit;
+  }
 }
 
 // button normalize

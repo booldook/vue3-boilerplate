@@ -79,12 +79,12 @@ $themes: (
     border: color(w80),
   ),
   dark: (
-    root-bg: linear-gradient(color(w40), color(w10)),
+    root-bg: linear-gradient(color(w30), color(w20)),
     page-bg: color(w30),
     text: color(w90),
     text2: color(w80),
     link: color(accent),
     hover: color(primary),
-    border: color(w20),
+    border: color(w50),
   ),
 );
