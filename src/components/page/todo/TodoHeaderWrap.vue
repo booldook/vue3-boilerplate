@@ -1,0 +1,28 @@
+<script setup>
+import { useStores } from '@/stores'
+import { storeToRefs } from 'pinia'
+
+const stores = useStores()
+const { getTodoCount } = storeToRefs(stores)
+</script>
+
+<template>
+  <div class="todo-header">
+    <h1 class="todo-title">PINIA</h1>
+    <div>리스트: {{ getTodoCount }} 개</div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.todo-header {
+  .todo-title {
+    font-size: 2em;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1em 0.5em 0.5em 0.5em;
+  @include border(w90, bottom);
+}
+</style>
