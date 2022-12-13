@@ -16,12 +16,7 @@ export const useTodoStore = defineStore('todo', () => {
    * ! 전체 리스트 개수
    * @returns {number} count
    */
-  const getTodoCount = computed(() => {
-    console.log('%c ===== list =====', 'background: #222; color: #ea6947')
-    console.log(list)
-    console.log(list.value)
-    return list.value.length
-  })
+  const getTodoCount = computed(() => list.value.length)
 
   /**
    * ! 모든 리스트
