@@ -4,22 +4,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0;
   position: relative;
   font-weight: normal;
+  font-size: 100%;
 }
 
-header, footer, main, section, article {
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main, body, table, tbody, tr, td, th {
   margin: 0;
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
-  font-size: inherit;
-}
-
-ul {
-  list-style: none;
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
 }
 
 body {
@@ -31,20 +28,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-size: inherit;
+}
+
+ol, ul {
+  list-style: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+
   &:link, &:visited, &:hover, &:active {
     color: inherit;
   }
 }
 
 // button normalize
-button,
-input,
-optgroup,
-select,
-textarea {
+button, input, optgroup, select, textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
@@ -52,23 +60,18 @@ textarea {
   outline: none;
 }
 
-button,
-input {
+button, input {
   overflow: visible;
   border-width: 1px;
   border-style: solid;
   border-color: color(w80);
 }
 
-button,
-select {
+button, select {
   text-transform: none;
 }
 
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+button, [type="button"], [type="reset"], [type="submit"] {
   -webkit-appearance: button;
 }
 
