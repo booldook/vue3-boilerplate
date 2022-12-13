@@ -5,16 +5,24 @@
   @return map-get($color-value, #{ $value });
 }
 
-@function gap ($value: md) {
-  @return map-get($gap-value, #{ $value });
+@function gap-xl ($value: md) {
+  @return map-get($gap-xl-value, #{ $value });
+}
+
+@function gap-lg ($value: md) {
+  @return map-get($gap-lg-value, #{ $value });
+}
+
+@function gap-md ($value: md) {
+  @return map-get($gap-md-value, #{ $value });
+}
+
+@function gap-sm ($value: md) {
+  @return map-get($gap-sm-value, #{ $value });
 }
 
 @function size ($value: md) {
   @return map-get($size-value, #{ $value });
-}
-
-@function radius ($value: md) {
-  @return map-get($radius-value, #{ $value });
 }
 
 // color
@@ -41,12 +49,33 @@ $color-value: (
 );
 
 // margin, padding
-$gap-value: (
-  'xl': 2em,
-  'lg': 1.5em,
+$gap-xl-value: (
+  'xl': 3em,
+  'lg': 2.75em,
+  'md': 2.5em,
+  'sm': 2.25em,
+  'xs': 2em,
+);
+$gap-lg-value: (
+  'xl': 1.875em,
+  'lg': 1.75em,
+  'md': 1.625em,
+  'sm': 1.5em,
+  'xs': 1.325em,
+);
+$gap-md-value: (
+  'xl': 1.25em,
+  'lg': 1.125em,
   'md': 1em,
   'sm': 0.875em,
   'xs': 0.75em,
+);
+$gap-sm-value: (
+  'xl': 0.625em,
+  'lg': 0.5em,
+  'md': 0.375em,
+  'sm': 0.25em,
+  'xs': 0.125em,
 );
 
 // response size
@@ -58,18 +87,9 @@ $size-value: (
   'xs': 576px,
 );
 
-// radius size
-$radius-value: (
-  'xl': 10px,
-  'lg': 8px,
-  'md': 6px,
-  'sm': 4px,
-  'xs': 2px,
-);
 
 // Theme
 $theme-map: default;
-
 $themes: (
   default: (
     root-bg: linear-gradient(color(white), color(w90)),

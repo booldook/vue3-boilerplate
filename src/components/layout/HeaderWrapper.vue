@@ -17,6 +17,7 @@ const { updateTheme } = themeStore
       <RouterLink to="/todo">Todo</RouterLink>
     </nav>
     <ul class="theme-wrapper">
+      <li>테마: </li>
       <li v-if="getTheme === 'default'" class="theme default" @click="updateTheme('dark')">기본</li>
       <li v-else class="theme dark" @click="updateTheme('default')">다크</li>
     </ul>
@@ -56,8 +57,19 @@ const { updateTheme } = themeStore
     }
   }
   .theme-wrapper {
+    display: flex;
+    align-items: center;
     margin-left: auto;
     cursor: pointer;
+    li:first-child {
+      margin-right: .5em;
+    }
+    li:not(:first-child) {
+      @include themed() {
+        border: 1px solid t(border);
+      }
+      padding: gap-sm(xs) gap-sm(md);
+    }
   }
 }
 </style>
