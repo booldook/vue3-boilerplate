@@ -42,7 +42,6 @@ const appliedTheme = computed(() => 'theme--' + getTheme.value)
   @include themed() {
     background: t(root-bg);
     color: t(text);
-    border: 1px solid t(border);
   }
   .app-container {
     margin: 0 auto;
