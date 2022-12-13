@@ -45,7 +45,7 @@ const styled = computed(() => {
     padding: 1px sold var(--padding);
   }
   @else {
-    padding: gap(md) gap(lg);
+    padding: gap-md(lg) gap-sm(lg);
   }
 
   @if var(--border-color) {
@@ -59,7 +59,7 @@ const styled = computed(() => {
     border-radius: 1px sold var(--radius);
   }
   @else {
-    border-radius: radius(md);
+    border-radius: gap-sm(md);
   }
 
   color: var(--color);

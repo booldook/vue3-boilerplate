@@ -3,15 +3,12 @@ import { createPinia } from 'pinia'
 // import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'  // Keep Alive
 import routes from './routes'
 
-//% Components
+//% Global Components
 import App from './App.vue'
 import PagerCp from './components/common/PagerCp.vue'
 
 //% plugins
 import common from '@/plugins/common'
-
-//% SCSS
-import './assets/scss/common.scss'
 
 //% App init
 const app = createApp(App)

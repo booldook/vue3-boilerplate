@@ -15,14 +15,18 @@ function onSave() {
     todo.value = ''
   }
 }
+
+function changeTodo(str) {
+  todo.value = str
+}
 </script>
 
 <template>
   <div class="todo-form">
     <form @submit.prevent="onSave">
-      할일 등록 : <input type="text" v-model="todo" class="input-default" />
-      <button class="btn-default">데이터 추가</button>
-      <button type="button" class="btn-default" @click="removeTodoAll">데이터 삭제</button>
+      할일 등록 : <input type="text" v-model="todo" class="input-default" autofocus />
+      <button type="submit" class="btn-default">데이터 추가</button>
+      <button type="button" class="btn-default" @click="removeTodoAll(), changeTodo('')">데이터 삭제</button>
     </form>
   </div>
 </template>
@@ -33,12 +37,12 @@ function onSave() {
   @include border(w90, bottom);
 
   .input-default {
-    padding: 8px;
+    padding: gap-sm(lg);
   }
 
   .btn-default {
-    padding: 6px;
-    margin-left: 6px;
+    padding: gap-sm(lg);
+    margin-left: gap-sm(md);
   }
 }
 </style>
