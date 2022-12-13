@@ -1,11 +1,26 @@
-import { storeToRefs } from 'pinia'
+import { defineStore, storeToRefs } from 'pinia'
 
 import { useTodoStore } from '@/stores/todoStore'
+import { useUserStore } from '@/stores/userStore'
+import { useThemeStore } from '@/stores/themeStore'
 
-const todoStore = useTodoStore()
+export const useStores = defineStore('root', () => {
 
-const todoGetter = storeToRefs(todoStore)
+  const todoStore = useTodoStore()
+  const userStore = useUserStore()
+  const themeStore = useThemeStore()
 
-console.log(todoGetter)
+  const todoGetter = storeToRefs(todoStore)
+  const userGetter = storeToRefs(userStore)
+  const themeGetter = storeToRefs(themeStore)
 
-export default todoGetter
+  return {
+    ...todoStore,
+    ...userStore,
+    ...themeStore,
+    ...todoGetter,
+    ...userGetter,
+    ...themeGetter,
+  }
+})
+

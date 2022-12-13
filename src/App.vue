@@ -1,17 +1,21 @@
 <script setup>
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
-import { useThemeStore } from '@/stores/themeStore'
+
 import { storeToRefs } from 'pinia'
+import { useStores } from '@/stores'
 
 import Footer from '@/components/layout/FooterWrapper.vue'
 import Header from '@/components/layout/HeaderWrapper.vue'
 
-const themeStore = useThemeStore()
-const { getTheme } = storeToRefs(themeStore)
-const { updateTheme } = themeStore
+const stores = useStores()
+const { getTheme } = storeToRefs(stores)
+const { updateTheme } = stores
 
 const appliedTheme = computed(() => 'theme--' + getTheme.value)
+
+// console.log('%c ===== stores =====', 'background: #222; color: #ea6947')
+// console.log(stores)
 </script>
 
 <template>
