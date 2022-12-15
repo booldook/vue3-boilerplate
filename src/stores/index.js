@@ -1,26 +1,7 @@
-import { defineStore, storeToRefs } from 'pinia'
+import { createPinia } from 'pinia'
+// import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'  // Keep Alive
 
-import { useTodoStore } from '@/stores/todoStore'
-import { useUserStore } from '@/stores/userStore'
-import { useThemeStore } from '@/stores/themeStore'
+const store = createPinia()
+// pinia.use(piniaPluginPersistedstate)  // Keep Alive
 
-export const useStores = defineStore('root', () => {
-
-  const todoStore = useTodoStore()
-  const userStore = useUserStore()
-  const themeStore = useThemeStore()
-
-  const todoGetter = storeToRefs(todoStore)
-  const userGetter = storeToRefs(userStore)
-  const themeGetter = storeToRefs(themeStore)
-
-  return {
-    ...todoStore,
-    ...userStore,
-    ...themeStore,
-    ...todoGetter,
-    ...userGetter,
-    ...themeGetter,
-  }
-})
-
+export default store

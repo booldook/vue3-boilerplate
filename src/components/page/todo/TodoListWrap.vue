@@ -1,12 +1,7 @@
 <script setup>
+import useStore from '@/stores/store'
 
-//% store 가져오기
-import { storeToRefs } from 'pinia'
-import { useTodoStore } from '@/stores/todoStore'
-
-const todoStore = useTodoStore()
-const { getTodoPage, getPager } = storeToRefs(todoStore)
-const { removeTodo } = todoStore
+const { removeTodo, getTodoPage } = useStore()
 
 // const props = defineProps([])
 // watch(() => getTodoAll, (nv, ov) => { console.log(nv, ov) })
@@ -20,8 +15,8 @@ function handleViewList(_data) {
 
 <template>
   <ul class="list-wrap">
-    <li class="list" v-for="(v, i) in getTodoPage(getPager.page)" :key="i" @click="handleViewList(v)">
-      {{ v }}
+    <li class="list" v-for="(v, i) in getTodoPage" :key="i" @click="handleViewList(v)">
+      {{ v.title }}
       <span class="btn-close" @click.stop="removeTodo(i)">x</span>
     </li>
   </ul>

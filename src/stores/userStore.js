@@ -1,11 +1,9 @@
 import { ref, computed, getCurrentInstance } from 'vue'
 import { defineStore } from 'pinia'
 
-import Define from '@/modules/define'
+import Define, { isSet, isEmpty } from '@/modules'
 
 export const useUserStore = defineStore('user', () => {
-
-  const { proxy: { $isSet } } = getCurrentInstance()
 
   //% STATE
   const user = ref({})

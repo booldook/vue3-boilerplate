@@ -1,27 +1,25 @@
 <script setup>
-import store from '@/stores/store'
 import PagerCp from '@/components/common/PagerCp.vue'
 import TodoHeaderWrap from '@/components/page/todo/TodoHeaderWrap.vue'
 import TodoFormWrap from '@/components/page/todo/TodoFormWrap.vue'
 import TodoListWrap from '@/components/page/todo/TodoListWrap.vue'
 
-const { getTodoPager, updateTodoPage } = store()
+import useStore from '@/stores/store'
+
+const { getTodoPager, updateTodoPage } = useStore()
 
 </script>
 
 <template>
-  <div class="todo-wrapper">
-    <TodoHeaderWrap />
-    <TodoFormWrap />
-  </div>
-  <div class="todo-body">
-    <TodoListWrap />
-    <PagerCp @changePage="updateTodoPage" :pager="getTodoPager"/>
-  </div>
+  <TodoHeaderWrap />
+  <TodoFormWrap />
+  <TodoListWrap />
+  <PagerCp :pager="getTodoPager" @updatePage="updateTodoPage"/>
 </template>
 
 <style lang="scss" scoped>
 .todo-wrapper {
+
 
 }
 </style>

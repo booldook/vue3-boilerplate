@@ -1,12 +1,9 @@
 <script setup>
-import { useThemeStore } from '@/stores/themeStore'
-import { storeToRefs } from 'pinia'
+import useStore from '@/stores/store'
 
 import HelloWorld from '@/components/common/LogoCp.vue'
 
-const themeStore = useThemeStore()
-const { getTheme } = storeToRefs(themeStore)
-const { updateTheme } = themeStore
+const { updateTheme, getTheme } = useStore()
 </script>
 
 <template>

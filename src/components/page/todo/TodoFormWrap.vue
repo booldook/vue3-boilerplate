@@ -1,17 +1,15 @@
 <script setup>
-import { useStores } from '@/stores'
-import { storeToRefs } from 'pinia'
-import { getCurrentInstance, ref } from 'vue'
+import { ref } from 'vue'
+import { isSet } from '@/modules'
+import useStore from '@/stores/store'
 
-const { proxy: { $isSet } } = getCurrentInstance()
-const stores = useStores()
-const { addTodo, removeTodoAll } = stores
+const { addTodo, removeTodoAll, getTodoLastId } = useStore()
 
 const todo = ref('')
 
 function onSave() {
-  if ($isSet(todo.value)) {
-    addTodo(todo.value)
+  if (isSet(todo.value)) {
+    addTodo({ id: getTodoLastId.value + 1, title: todo.value, createdAt: new Date() })
     todo.value = ''
   }
 }
@@ -22,13 +20,11 @@ function changeTodo(str) {
 </script>
 
 <template>
-  <div class="todo-form">
-    <form @submit.prevent="onSave">
-      할일 등록 : <input type="text" v-model="todo" class="input-default" autofocus />
-      <button type="submit" class="btn-default">데이터 추가</button>
-      <button type="button" class="btn-default" @click="removeTodoAll(), changeTodo('')">데이터 삭제</button>
-    </form>
-  </div>
+  <form class="todo-form" @submit.prevent="onSave">
+    할일 등록 : <input type="text" v-model="todo" class="input-default" autofocus />
+    <button type="submit" class="btn-default">데이터 추가</button>
+    <button type="button" class="btn-default" @click="removeTodoAll(), changeTodo('')">데이터 삭제</button>
+  </form>
 </template>
 
 <style scoped lang="scss">

@@ -6,7 +6,7 @@
  * @param {number} pagerCount
  * @returns {object} pager
  */
-export function computePager(page, total, pageCount, pagerCount) {
+export function computePager(page = 1, total, pageCount = 10, pagerCount = 5) {
   const pager = { page, total, pageCount, pagerCount }
   pager.pageTotal = Math.ceil(pager.total / pager.pageCount) || 1
   pager.startIdx = (pager.page - 1) * pager.pageCount
@@ -18,7 +18,6 @@ export function computePager(page, total, pageCount, pagerCount) {
   pager.pagerNext = pager.pageEnd === pager.pageTotal ? pager.pageTotal : pager.pageEnd + 1
   pager.pagerArr = []
   for (let i = pager.pageStart; i <= pager.pageEnd; i++) pager.pagerArr.push(i)
-
   return pager
 }
 
@@ -31,4 +30,31 @@ export function computePager(page, total, pageCount, pagerCount) {
 export function computedPageNumber(value, initialValue = null) {
   const num = Number(value || initialValue)
   return isNaN(num) ? (initialValue && typeof initialValue === 'number' ? initialValue : null) : num
+}
+
+/**
+ * ! isEmpty
+ * @param {any} value
+ * @returns {boolean}
+ */
+export function isEmpty(value) {
+  return (
+    value === null ||
+    value === undefined ||
+    typeof value === 'undefined' ||
+    value === '' ||
+    value === false ||
+    String(value).toLowerCase() === 'false' ||
+    value === 0 ||
+    value === '0'
+  )
+}
+
+/**
+ * ! isSet
+ * @param {any} value
+ * @returns {boolean}
+ */
+export function isSet(value) {
+  return !isEmpty(value)
 }

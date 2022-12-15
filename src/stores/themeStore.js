@@ -1,11 +1,9 @@
 import { ref, computed, getCurrentInstance } from 'vue'
 import { defineStore } from 'pinia'
 
-import Define from '@/modules/define'
+import Define, { isSet, isEmpty } from '@/modules'
 
 export const useThemeStore = defineStore('theme', () => {
-
-  const { proxy: { $isSet } } = getCurrentInstance()
 
   //% STATE
   const theme = ref('default')

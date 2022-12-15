@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/pages/home/HomePage.vue'
+import Home from '@/views/home/HomePage.vue'
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/todo',
     name: 'todo',
-    component: () => import('../pages/todo/TodoPage.vue'),
+    component: () => import('../views/todo/TodoPage.vue'),
   },
 ]
 

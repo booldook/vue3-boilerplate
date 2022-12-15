@@ -1,9 +1,7 @@
 <script setup>
-import { useStores } from '@/stores'
-import { storeToRefs } from 'pinia'
+import useStore from '@/stores/store'
 
-const stores = useStores()
-const { getTodoCount } = storeToRefs(stores)
+const { getTodoCount } = useStore()
 </script>
 
 <template>
