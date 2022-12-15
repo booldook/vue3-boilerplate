@@ -3,5 +3,7 @@ import Welcome from '@/components/page/home/WelcomeWrap.vue'
 </script>
 
 <template>
-  <Welcome />
+  <div class="home-wrapper">
+    <Welcome />
+  </div>
 </template>

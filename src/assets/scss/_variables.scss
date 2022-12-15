@@ -5,20 +5,8 @@
   @return map-get($color-value, #{ $value });
 }
 
-@function gap-xl ($value: md) {
-  @return map-get($gap-xl-value, #{ $value });
-}
-
-@function gap-lg ($value: md) {
-  @return map-get($gap-lg-value, #{ $value });
-}
-
-@function gap-md ($value: md) {
-  @return map-get($gap-md-value, #{ $value });
-}
-
-@function gap-sm ($value: md) {
-  @return map-get($gap-sm-value, #{ $value });
+@function txt-color ($value: primary) {
+  @return map-get($txt-value, #{ $value });
 }
 
 @function size ($value: md) {
@@ -40,43 +28,26 @@ $color-value: (
   'w10': #212121,
   'w0': #080808,
   'black': '#000',
-  'primary': #3798f8,
-  'accent': #1356ff,
-  'success': #40df8a,
-  'warning': #e6ae69,
-  'info': #61e3c5,
-  'danger': #ee3333,
+  'primary': #34568B,
+  'secondary': #BFBFBF,
+  'accent': #92A8D1,
+  'success': #5f7c34,
+  'warning': #EFC050,
+  'info': #6B5B95,
+  'danger': #c34e42,
 );
 
-// margin, padding
-$gap-xl-value: (
-  'xl': 3em,
-  'lg': 2.75em,
-  'md': 2.5em,
-  'sm': 2.25em,
-  'xs': 2em,
+$txt-value: (
+  'primary': color(w100),
+  'secondary': color(w0),
+  'accent': color(w0),
+  'success': color(w100),
+  'warning': color(w0),
+  'info': color(w100),
+  'danger': color(w100),
 );
-$gap-lg-value: (
-  'xl': 1.875em,
-  'lg': 1.75em,
-  'md': 1.625em,
-  'sm': 1.5em,
-  'xs': 1.325em,
-);
-$gap-md-value: (
-  'xl': 1.25em,
-  'lg': 1.125em,
-  'md': 1em,
-  'sm': 0.875em,
-  'xs': 0.75em,
-);
-$gap-sm-value: (
-  'xl': 0.625em,
-  'lg': 0.5em,
-  'md': 0.375em,
-  'sm': 0.25em,
-  'xs': 0.125em,
-);
+
+$colors : (primary, secondary, accent, success, warning, info, danger);
 
 // response size
 $size-value: (
@@ -92,21 +63,21 @@ $size-value: (
 $theme-map: default;
 $themes: (
   default: (
-    root-bg: linear-gradient(color(white), color(w90)),
-    page-bg: color(w90),
+    root-bg: linear-gradient(color(white), color(white)),
+    page-bg: color(w100),
     text: color(w10),
     text2: color(w30),
-    link: color(accent),
-    hover: color(primary),
+    link: color(primary),
+    hover: color(accent),
     border: color(w80),
   ),
   dark: (
     root-bg: linear-gradient(color(w30), color(w20)),
     page-bg: color(w30),
-    text: color(w80),
-    text2: color(w60),
+    text: color(w70),
+    text2: color(w50),
     link: color(accent),
-    hover: color(primary),
-    border: color(w50),
+    hover: color(info),
+    border: color(w40),
   ),
 );

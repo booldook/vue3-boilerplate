@@ -13,11 +13,15 @@ const { updateTheme, getTheme } = useStore()
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/todo">Todo</RouterLink>
     </nav>
-    <ul class="theme-wrapper">
-      <li>테마: </li>
-      <li v-if="getTheme === 'default'" class="theme default" @click="updateTheme('dark')">기본</li>
-      <li v-else class="theme dark" @click="updateTheme('default')">다크</li>
-    </ul>
+    <div class="theme-wrapper">
+      <div>테마: </div>
+      <FormButton
+        class-name="info"
+        padding="0.25em 0.5em"
+        @click="updateTheme(getTheme === 'dark' ? 'default' : 'dark')">
+        {{ getTheme === 'dark' ? '다크' : '기본' }}
+      </FormButton>
+    </div>
   </header>
 </template>
 
@@ -28,6 +32,9 @@ const { updateTheme, getTheme } = useStore()
   align-items: flex-end;
   padding: 1em 0 0.5em 0;
   @include border(w80, bottom);
+  @include themed() {
+    border-bottom-color: t(border);
+  }
   .nav-wrapper {
     display: flex;
     margin-left: 3em;
@@ -58,14 +65,8 @@ const { updateTheme, getTheme } = useStore()
     align-items: center;
     margin-left: auto;
     cursor: pointer;
-    li:first-child {
-      margin-right: .5em;
-    }
-    li:not(:first-child) {
-      @include themed() {
-        border: 1px solid t(border);
-      }
-      padding: gap-sm(xs) gap-sm(md);
+    span {
+      margin-right: 0.5em;
     }
   }
 }

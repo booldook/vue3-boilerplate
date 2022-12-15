@@ -55,35 +55,37 @@
 
 
 // 반응형
-@mixin XL {
-  @media screen and (max-width: size(xl)) {
-    @content;
-  }
-}
-
-@mixin LG {
-  @media screen and (max-width: size(lg)) {
-    @content;
-  }
-}
-
-@mixin MD {
-  @media screen and (max-width: size(md)) {
+@mixin XS {
+  @media screen and (min-width: size(xs)) {
     @content;
   }
 }
 
 @mixin SM {
-  @media screen and (max-width: size(sm)) {
+  @media screen and (min-width: size(sm)) {
     @content;
   }
 }
 
-@mixin XS {
-  @media screen and (max-width: size(xs)) {
+@mixin MD {
+  @media screen and (min-width: size(md)) {
     @content;
   }
 }
+
+@mixin LG {
+  @media screen and (min-width: size(lg)) {
+    @content;
+  }
+}
+
+@mixin XL {
+  @media screen and (min-width: size(xl)) {
+    @content;
+  }
+}
+
+
 
 // Theme
 @mixin themed() {

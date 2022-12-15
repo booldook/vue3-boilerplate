@@ -67,9 +67,9 @@ export const useTodoStore = defineStore('todo', () => {
    */
   function removeTodo(id) {
     if (Number(id)) {
-      const removeData = { ...list.value[id] }
-      list.value.splice(id, 1)
-      return removeData
+      const removedTodo = list.value.filter(v => v.id === id)
+      list.value = list.value.filter(v => v.id !== id)
+      return removedTodo
     }
     else return null
   }

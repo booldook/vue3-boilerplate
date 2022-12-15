@@ -9,6 +9,7 @@ const { getTodoCount } = useStore()
     <h1 class="todo-title">PINIA</h1>
     <div>리스트: {{ getTodoCount }} 개</div>
   </div>
+
 </template>
 
 <style scoped lang="scss">
@@ -22,5 +23,8 @@ const { getTodoCount } = useStore()
   align-items: flex-end;
   padding: 1em 0.5em 0.5em 0.5em;
   @include border(w90, bottom);
+  @include themed() {
+    border-bottom-color: t(border)
+  }
 }
 </style>

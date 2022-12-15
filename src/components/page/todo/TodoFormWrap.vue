@@ -22,8 +22,8 @@ function changeTodo(str) {
 <template>
   <form class="todo-form" @submit.prevent="onSave">
     할일 등록 : <input type="text" v-model="todo" class="input-default" autofocus />
-    <button type="submit" class="btn-default">데이터 추가</button>
-    <button type="button" class="btn-default" @click="removeTodoAll(), changeTodo('')">데이터 삭제</button>
+    <FormButton type="submit" class-name="primary">데이터 추가</FormButton>
+    <FormButton type="button" class-name="danger" @click="removeTodoAll(), changeTodo('')">데이터 삭제</FormButton>
   </form>
 </template>
 
@@ -31,14 +31,12 @@ function changeTodo(str) {
 .todo-form {
   padding: 1em;
   @include border(w90, bottom);
-
-  .input-default {
-    padding: gap-sm(lg);
+  @include themed() {
+    border-color: t(border)
   }
 
-  .btn-default {
-    padding: gap-sm(lg);
-    margin-left: gap-sm(md);
+  .input-default {
+    padding: 0.75em;
   }
 }
 </style>

@@ -11,10 +11,12 @@ const { getTodoPager, updateTodoPage } = useStore()
 </script>
 
 <template>
-  <TodoHeaderWrap />
-  <TodoFormWrap />
-  <TodoListWrap />
-  <PagerCp :pager="getTodoPager" @updatePage="updateTodoPage"/>
+  <div class="todo-wrapper">
+    <TodoHeaderWrap />
+    <TodoFormWrap />
+    <TodoListWrap />
+    <PagerCp :pager="getTodoPager" @updatePage="updateTodoPage"/>
+  </div>
 </template>
 
 <style lang="scss" scoped>

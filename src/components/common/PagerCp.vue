@@ -43,6 +43,9 @@ defineEmits(['updatePage'])
       height: 30px;
       line-height: 28px;
       border: 1px solid #eee;
+      @include themed() {
+        border-color: t(border)
+      }
 
       &:not(:last-child) {
         border-right: none;

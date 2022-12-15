@@ -15,16 +15,10 @@ const appliedTheme = computed(() => 'theme--' + getTheme.value)
 <template>
   <div class="theme-container" :class="appliedTheme">
     <div class="gnb-wrapper">
-      <div class="app-container">
-        <div class="header-container">
-          <Header />
-        </div>
-        <div class="router-container">
-          <RouterView />
-        </div>
-        <div class="footer-container">
-          <Footer />
-        </div>
+      <div class="app-container wrapper">
+        <Header />
+        <RouterView />
+        <Footer />
       </div>
     </div>
   </div>
@@ -37,13 +31,13 @@ const appliedTheme = computed(() => 'theme--' + getTheme.value)
     background: t(root-bg);
     color: t(text);
   }
+
   .app-container {
     margin: 0 auto;
     padding: 0 0.5em;
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-row-gap: 2em;
-    max-width: 1200px;
     min-height: 100vh;
   }
 }

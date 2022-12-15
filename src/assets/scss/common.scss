@@ -1,76 +1,45 @@
-@import 'mixins';
+@import 'reset';
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  position: relative;
-  font-weight: normal;
-  font-size: 100%;
+.wrapper {
+  width: 100%;
+  max-width: size(lg);
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
-  display: block;
-}
-
-body {
-  min-height: 100vh;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-table, tbody, tr, td, th {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
-  font-size: inherit;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-
-  &:link, &:visited, &:hover, &:active {
-    color: inherit;
+.theme-container {
+  .btn {
+    font-size: 1em;
+    padding: 0.75em 1.5em;
+    border: 1px solid transparent;
+    margin-left: 0.25em;
+    &.btn-sm {
+      font-size: 0.875em;
+    }
+    &.btn-lg {
+      font-size: 1.125em;
+    }
+    @each $color in $colors {
+      &.btn-#{$color} {
+        background-color: color(#{$color});
+        color: txt-color(#{$color});
+        @if $color == transparency {
+          background-color: transparent;
+          color: color(w0);
+          border: 1px solid color(w80);
+        }
+        &:hover {
+          @if $color != transparency {
+            background-color: rgba(color(#{$color}), 0.85);
+          }
+        }
+      }
+    }
   }
-}
 
-// button normalize
-button, input, optgroup, select, textarea {
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-  outline: none;
-}
+  &.theme--default {
+    // TODO :: 미정
+  }
 
-button, input {
-  overflow: visible;
-  border-width: 1px;
-  border-style: solid;
-  border-color: color(w80);
-}
-
-button, select {
-  text-transform: none;
-}
-
-button, [type="button"], [type="reset"], [type="submit"] {
-  -webkit-appearance: button;
-}
-
-button {
-  cursor: pointer;
-  user-select: none;
+  &.theme--dark {
+    // TODO :: 미정
+  }
 }
