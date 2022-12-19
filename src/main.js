@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import store from './stores'
+import pinia from './stores'
 import routes from './routes'
 import globalPlugins from '@/plugins'
 
@@ -12,7 +12,7 @@ const app = createApp(App)
 //% Global Properties Init
 app.use(globalPlugins) // Plugin inject
 app.use(routes) // Router Inject
-app.use(store)  // Store  Inject
+app.use(pinia)  // Store  Inject
 
 //% App Mount
 app.mount('#app')

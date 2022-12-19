@@ -141,5 +141,9 @@ export const useTodoStore = defineStore('todo', () => {
     updateTodoPageCount,
     updateTodoPagerCount,
   }
+}, {
+  persist: {
+
+  },
 })
 

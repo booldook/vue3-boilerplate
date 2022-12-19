@@ -21,17 +21,17 @@ const service = axios.create({
 
 /* axios 인터셉터 처리 [요청] */
 service.interceptors.request.use((config) => {
-  // TODO :: Global Loading true
+    // TODO :: Global Loading true
 
-  // TODO :: Token 가져오기
+    // TODO :: Token 가져오기
 
-  // TODO :: Token headers 주입
+    // TODO :: Token headers 주입
 
-  return config
-},
-(error) => {
-  return Promise.reject(error)
-})
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  })
 
 /* axios 인터셉터 처리 [응답] */
 service.interceptors.response.use(async (response) => {
