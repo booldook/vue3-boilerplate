@@ -230,3 +230,4 @@ test/
 
 !/dist/
 !/ES6.md
+/src/modules/_api.js
