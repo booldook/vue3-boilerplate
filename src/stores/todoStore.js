@@ -128,6 +128,8 @@ export const useTodoStore = defineStore('todo', () => {
   }
 
   return {
+    list,
+    pager,
     getTodoCount,
     getTodoLastId,
     getTodoPager,
@@ -143,7 +145,8 @@ export const useTodoStore = defineStore('todo', () => {
   }
 }, {
   persist: {
-
+    enabled: true,
+    storage: localStorage,
   },
 })
 

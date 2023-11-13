@@ -2,6 +2,7 @@
 import useStore from '@/stores/store'
 
 import HelloWorld from '@/components/common/LogoCp.vue'
+import FormButton from "@/components/common/form/FormButton.vue";
 
 const { updateTheme, getTheme } = useStore()
 </script>
